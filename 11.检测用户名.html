@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .highlight {
+            background: red;
+        }
+    </style>
+</head>
+<body>
+用户名：<input type="text" id="txt"/><br/>
+密码：<input type="password" id="pwd"/><br/>
+<input type="button" value="登录" id="btnLogin"/>
+
+<script src="common.js"></script>
+<script>
+    //检测用户名是否是3-6位，密码是否是6-8位，如果不满足要求高亮显示
+    var btnLogin=my$("btnLogin");
+    //给按钮注册事件
+    btnLogin.onclick = function(){
+        //3.检测用户名是否是3-6位数
+        var txtName =my$("txt");
+        if(txtName.value.length<3 || txtName.value.length>6 ){
+            txtName.className="highlight";
+            alert("用户名应该在3-6位数");
+            return;//如果不合法，直接返回
+        }else{
+            txtName.className="";
+        }
+        //3.检测密码是否是6-8位数
+        var pwdName =my$("pwd");
+        if(pwdName.value.length<6 || pwdName.value.length>8 ){
+            pwdName.className="highlight";
+            alert("密码应该在6-8位数");
+            return;//如果不合法，直接返回
+        }else{
+            pwdName.className="";
+        }
+        alert("我登录去了")
+    }
+</script>
+
+
+</body>
+</html>

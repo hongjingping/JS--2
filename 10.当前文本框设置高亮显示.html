@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        input {
+            background-color: #0099cc;
+        }
+    </style>
+</head>
+<body>
+<input type="text"/><br/>
+<input type="text"/><br/>
+<input type="text"/><br/>
+<input type="text"/><br/>
+<input type="text"/><br/>
+<input type="text"/><br/>
+<input type="text"/><br/>
+<input type="text"/><br/>
+<input type="button" id="btn" value="注册"/>
+<script>
+    //设置当前文本高亮显示
+    //1.找到这些文本框
+    var inputs=document.getElementsByName("input");
+    for(var i=0;i<inputs.length;i++){
+        var input = inputs[i];
+        //判断是否是文本框
+        if(input.type === "text"){
+            //给文本框注册事件 onfocus onblur
+            input.onfocus = function(){
+                //高亮显示
+                this.style.backgroundColor="lightgray";
+            }
+            input.onblur = function(){
+                this.style.backgroundColor="";
+            }
+
+        }
+    }
+
+</script>
+</body>
+</html>

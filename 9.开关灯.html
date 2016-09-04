@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="conmon.js"></script>
+</head>
+<body>
+<input type="button" value="开灯" id="btn"/>
+<script>
+    var isOpened = true;//默认是开灯
+    var btn = my$("btn");
+    btn.onclick = function(){
+        if(isOpened){
+         document.body.style.backgroundColor="black";
+        this.value = "开灯";
+        isOpened = false;
+        }
+        else{
+        document.body.style.backgroundColor="white";
+        this.value="关灯";
+        isOpened=true;
+    }
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .cls {
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+
+    </style>
+    <script src="conmon.js"></script>
+</head>
+<body>
+<button id="btn">样式</button>
+<div id="box"></div>
+<script>
+    //1.找对象-btn
+    var btn=my$("btn");
+    btn.onclick = function(){
+        //2，绑定事件
+        var box = my$("box");
+        box.className="cls";
+    }
+    //
+    //
+</script>
+</body>
+</html>

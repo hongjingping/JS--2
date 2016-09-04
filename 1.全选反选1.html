@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>全选返选</title>
+    <style>
+        * {
+            padding:0;
+            margin:0;
+        }
+        .wrap {
+            width: 300px;
+            margin: 100px auto 0;
+        }
+        table {
+            border-collapse: collapse;
+            border-spacing: 0;
+            border:1px solid gray;
+            width:300px;
+        }
+        th,td {
+            border:1px solid #d0d0d0;
+            color: #404060;
+            padding:10px;
+        }
+       th {
+           background-color: #09c;
+           font: bold 16px "微软雅黑";
+           color:#fff;
+       }
+        td {
+            font: 14px "微软雅黑";
+        }
+        tbody tr {
+            background-color: #f0f0f0;
+        }
+        tbody tr:hover {
+            cursor:pointer;
+            background-color:#fafafa;
+        }
+    </style>
+    <script src="conmon.js"></script>
+</head>
+<body>
+<div class="wrap">
+    <table>
+        <thead>
+        <tr>
+            <th><input type="checkbox" id="j_cbAll"/></th>
+            <th>菜名</th>
+            <th>饭店</th>
+        </tr>
+        </thead>
+        <tbody id="j_tb">
+        <tr>
+            <td><input type="checkbox"/></td>
+            <td>红烧肉</td>
+            <td>田老师</td>
+        </tr>
+        <tr>
+            <td><input type="checkbox"/></td>
+            <td>红烧肉</td>
+            <td>田老师</td>
+        </tr>
+        <tr>
+            <td><input type="checkbox"/></td>
+            <td>红烧肉</td>
+            <td>田老师</td>
+        </tr>
+        <tr>
+            <td><input type="checkbox"/></td>
+            <td>红烧肉</td>
+            <td>田老师</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<script>
+    //点击头部的选择框，全部选中
+    //1.找对象
+    var cbAll =my$("j_cbAll");
+    //2.注册事件
+    cbAll.onclick=function(){
+        //2.1.找到下面的input中的checkbox
+        var tbody = my$("j_tb");
+        var inputs = tbody.getElementsByTagName("input");
+        //2.2遍历所有的input标签，找到checkbox
+        for(var i=0;i<inputs.length;i++){
+            //2.3找到某一个input标签
+            var input = inputs[i];
+            //2.4判断是否是checkbox;
+            if(input.type === "checkbox"){
+                //设置选中全部
+                input.checked=cbAll.checked;
+            }
+        }
+    };
+    //------------------------------------------------
+    //点击下面的选择框，只要有一个未选中，全选框就不选
+    //如果下面的选择框都选中了，就直接全选
+    //找对象-找到所有的子盒子
+    var tbody = my$("j_tb");
+    var inputs = tbody.getElementsByTagName("input");
+    //判断多个元素是否被选中，使用for循环
+    for(var i=0;i<inputs.length;i++){
+        //注册事件
+        //找到某一个input标签，后面必须加上[i],否则指的就是全部的input标签
+        var input = inputs[i];
+        //判断是否是checkbox
+        if(input.type === "checkbox"){
+            input.onclick=function(){
+                //如果有一个子盒子没有选中，全选不选中，如果子盒子都选中，全选选中
+                //设置一个变量记录盒子是否被选中
+                var isAllChecked = true;//假设全部选中
+                //遍历每一个input标签
+                for(var i=0;i<inputs.length;i++){
+                    //获取每一个input标签
+                    input = inputs[i];
+                    //判断是否checkbox
+                    if(input.type === "checkbox"){
+                        //判断checkbox是否被选中
+                        if(!input.checked){
+                            //有一个没有被选中，记录没有被全选
+                            isAllChecked = false;
+                            break;
+                        }
+                    }
+                }
+                //设置全选按钮
+                cbAll.checked = isAllChecked;
+            }
+        }
+    }
+
+</script>
+</body>
+</html>

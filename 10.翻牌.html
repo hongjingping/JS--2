@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<select name="" id="sl">
+    <option value="">上海</option>
+    <option value="">广州</option>
+    <option value="">杭州</option>
+    <option value="" selected="selected">厦门</option>
+</select>
+<input type="button" value="翻牌" id="btn"/>
+<script src="common.js"></script>
+<script>
+    //随机选择一个option
+    //找到按钮
+    var btn = my$("btn");
+    //注册事件
+    btn.onclick = function(){
+        //获取随机数
+        var index = parseInt(Math.random()*4);
+        console.log(Math.random());
+        //让随机数对应的option选中
+        //找到下拉框中的所有的option
+        //找到下拉框
+        var sl = my$("sl");
+        //获取所有的option
+        var options=sl.getElementsByTagName("option");
+        //获取当前的option
+        var option=options[index];
+        option.selected = true;
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            list-style-type: none;
+        }
+
+        .box {
+            width: 400px;
+            height: 300px;
+            border: 1px solid #ccc;
+            margin: 100px auto;
+            overflow: hidden;
+        }
+
+        .hd {
+            height: 45px;
+        }
+
+        .hd span {
+            display: inline-block;
+            width: 90px;
+            background-color: pink;
+            line-height: 45px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .hd span.current {
+            background-color: purple;
+        }
+
+        .bd li {
+            height: 255px;
+            background-color: purple;
+            display: none;
+        }
+
+        .bd li.current {
+            display: block;
+        }
+    </style>
+   <!-- <script src="conmon.js"></script>-->
+</head>
+<body>
+<div id="box" class="box">
+    <div class="hd">
+        <span class="current">体育1</span>
+        <span>体育2</span>
+        <span>体育3</span>
+        <span>体育4</span>
+    </div>
+    <div class="bd">
+        <ul>
+            <li class="current">体育1</li>
+            <li>体育2</li>
+            <li>体育3</li>
+            <li>体育4</li>
+        </ul>
+    </div>
+</div>
+<script>
+    //1.点击导航的时候，让当前点击的模块高亮显示
+    //1.找对象,找到所有的模块-span
+    var box = document.getElementById("box");
+    var spans = box.getElementsByClassName("span");
+    //2.给所有的模块注册单击事件
+    for (var i = 0; i < spans.length; i++) {
+        //获取每一个span
+        var span = spans[i];
+
+        //让span记录下来对应的索引
+        span.setAttribute("index", i);
+
+        //3.注册事件
+        span.onclick = function () {
+            //3.1让当前点击的模块高亮显示，其他模块去掉高亮显示
+            //让所有的span取消高亮显示
+            for (var i = 0; i < spans.length; i++) {
+                span = spans[i];
+                //移除class属性
+                span.removeAttribute("class");
+            }
+            //设置当前的span高亮显示
+            this.setAttribute("class", "current");
+
+            //2.点击导航的时候，让当前对应的模块的详细内容显示
+            //3.如果找到对应的模块---根据对应的索引
+            //如何找到当前点击的span的索引
+            var index = this.getAttribute("index");
+            //获取所有的i
+            var lists = box.getElementsByTagName("li");
+
+            //让所有的li隐藏
+            for (var i = 0; i < lists.length; i++) {
+                var li = lists[i];
+                li.removeAttribute("class");
+            }
+            //根据索引找到相应的模块，让其显示
+            li = lists[index];
+            li.setAttribute("class", "current");
+        }
+    }
+
+</script>
+</body>
+</html>

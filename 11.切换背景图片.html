@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+        body {
+            background-image: url(images/1.jpg);
+        }
+        #mask {
+            background-color:  rgba(255,255,255,0.3);
+            height: 200px;
+            text-align: center;
+        }
+        #mask img {
+            width: 200px;
+            margin-top: 35px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div id="mask">
+    <img src="images/1.jpg" alt=""/>
+    <img src="images/2.jpg" alt=""/>
+    <img src="images/3.jpg" alt=""/>
+    <img src="images/4.jpg" alt=""/>
+</div>
+<script src="conmon.js"></script>
+<script>
+    //1找到所有的img标签
+    var mask = my$("mask");
+    var imgs = mask.children;
+    //2.给所有的img注册事件
+    for(var i=0;i<imgs.length;i++){
+        //获取每一个img
+        var img=imgs[i];
+        img.onclick=function(){
+            var imgSrc=this.getAttribute("src");
+            //3.切换body的背景图
+            document.body.style.backgroundImage="url("+imgSrc+")";
+        }
+    }
+</script>
+</body>
+</html>

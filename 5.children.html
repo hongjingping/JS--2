@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="conmon.js"></script>
+</head>
+<body>
+<div id="box">1231
+    <!-- -->
+    <p>1</p>
+    <p>2</p>
+    <p>3</p>
+    <span>s1</span>
+    <span>s2</span>
+    <span>s3</span>
+</div>
+<script>
+    var box = my$("box");
+    console.log(box.children.length);//6
+    for(var i=0;i<box.children.length;i++){
+        var element = box.children[i];
+        element.innerText = "abc";
+    }
+</script>
+</body>
+</html>
